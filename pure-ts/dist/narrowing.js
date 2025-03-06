@@ -48,3 +48,20 @@ function getFood(pet) {
     }
     return "Bird Food";
 }
+function calculateArea(shape) {
+    if (shape.kind === "square") {
+        return shape.side * shape.side;
+    }
+    return shape.width * shape.height;
+}
+function getArea(shape) {
+    switch (shape.kind) {
+        case "square":
+            return shape.side * shape.side;
+        case "rectangle":
+            return shape.width * shape.height;
+        default:
+            const deafaultshape = shape;
+            return deafaultshape;
+    }
+}

@@ -86,3 +86,35 @@ function getFood(pet:Fish|Bird){
     }
     return "Bird Food";
 }
+
+
+
+interface Square{
+    kind:"square";
+    side:number;
+}
+interface Rectangle{
+    kind:"rectangle";
+    width:number;
+    height:number;
+}
+
+type Shape = Square | Rectangle;
+
+function calculateArea(shape:Shape){
+    if(shape.kind==="square"){
+        return shape.side*shape.side;
+    }
+    return shape.width*shape.height;    
+}
+
+function getArea(shape:Shape){
+     switch(shape.kind){
+         case "square":
+                return shape.side*shape.side;
+         case "rectangle":   
+                return shape.width*shape.height;
+         default: 
+         const deafaultshape: never =shape
+         return deafaultshape;
+}
