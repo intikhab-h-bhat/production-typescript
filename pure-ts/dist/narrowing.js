@@ -15,7 +15,7 @@ console.log(provideId("Abc"));
 function printAll(val) {
     if (val) {
         if (typeof val === "object") {
-            val.forEach((v) => {
+            val.map((v) => {
                 console.log(v);
             });
         }
@@ -23,4 +23,28 @@ function printAll(val) {
             console.log(val);
         }
     }
+}
+// in operator for narrowing
+function isAdminAccount(account) {
+    if ("isAdmin" in account) {
+        return account.isAdmin;
+    }
+}
+// instanceof operator for narrowing
+function check(x) {
+    if (x instanceof Date) {
+        return x.getHours();
+    }
+    return x.toUpperCase();
+}
+console.log(check(new Date()));
+function move(pet) {
+    return pet.swim() !== undefined;
+}
+function getFood(pet) {
+    if (move(pet)) {
+        pet;
+        return "Fish Food";
+    }
+    return "Bird Food";
 }

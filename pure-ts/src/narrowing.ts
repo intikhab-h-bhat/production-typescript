@@ -23,7 +23,7 @@ function printAll(val:string|string[]|null){
 
     if(val){
         if(typeof val==="object"){
-           val.forEach((v)=>{
+           val.map((v)=>{
                 console.log(v);
            })
             
@@ -32,4 +32,57 @@ function printAll(val:string|string[]|null){
         }
     }
 
+}
+
+
+interface User{
+    name:string;
+    age:number;
+}
+interface Admin{
+    name:string;
+    age:string;
+    isAdmin:boolean;
+}
+
+// in operator for narrowing
+function isAdminAccount(account:User|Admin){
+    
+   if("isAdmin" in account){
+       return account.isAdmin;
+   }
+    
+}
+
+// instanceof operator for narrowing
+function check(x:Date|string){
+
+    if(x  instanceof Date){
+        return x.getHours();
+    }
+    return x.toUpperCase();
+}
+
+console.log(check(new Date()));
+
+
+// custom type guard for narrowing
+type Fish={
+    swim:()=>void;}
+type Bird={
+    fly:()=>void;}
+
+
+function move(pet:Fish|Bird): pet is Bird{
+    
+    return (pet as Fish).swim() !== undefined;
+ 
+}
+
+function getFood(pet:Fish|Bird){
+    if(move(pet)){
+        pet
+        return "Fish Food";
+    }
+    return "Bird Food";
 }
